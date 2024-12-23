@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.jskno'
+version = ''
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/org.keycloak/keycloak-services
+    compileOnly 'org.keycloak:keycloak-services:26.0.6'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

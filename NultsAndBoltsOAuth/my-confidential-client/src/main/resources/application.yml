@@ -1,0 +1,22 @@
+spring:
+    application:
+      name: my-confidential-client
+
+# The sample and instructions above for the callback and logout URL configuration use port 3000.
+# If you wish to use a different port, change this and be sure your callback and logout URLs are
+# configured with the correct port.
+server:
+  port: 3000
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.auth0.example: TRACE
+
+# src/main/resources/application.yml
+okta:
+  oauth2:
+    issuer: https://dev-0njhlabst0re1n8j.us.auth0.com/
+    client-id: LIHAioyghZjVTQ4VmlPCM096dKGlApPJ
+    client-secret: tw-Ib7CBjPlRWZJY38so_kIkIT1ZgI0EFrEgultB-y-QWOwOHozXPmuDJdFmz14O
