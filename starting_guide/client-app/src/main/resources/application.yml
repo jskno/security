@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: client-app
+
+  security:
+    oauth2:
+      resourceserver:
+        #jwt:
+         # issuer-uri: "http://127.0.0.1:9000"
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+      client:
+        registration:
+          oidc-client:
+            provider: spring
+            client-id: oidc-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:8080/authorized"
+            scope:
+              - oidc
+              - profile
+              - read
+            client-name: oidc-client
+        provider:
+          spring:
+            #issuer-uri: "http://127.0.0.1:9000"
+            jwk-set-uri: http://127.0.0.1:9000/oauth2/jwks
+            authorization-uri: http://localhost:9000/oauth2/authorize
+            token-uri: http://localhost:9000/oauth2/token
