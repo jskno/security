@@ -1,14 +1,36 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    org.springframework.boot.autoconfigure: DEBUG
+
 spring:
   application:
     name: client-app
 
   security:
+
+    # To use the issuer-uri property, it must also be true that one of
+    #   - http://127.0.0.1:9001/.well-known/openid-configuration,
+    #   - http://127.0.0.1:9001/.well-known/openid-configuration/issuer, or
+    #   - http://127.0.0.1:9001/.well-known/oauth-authorization-server/issuer
+    # is a supported endpoint for the authorization server. This endpoint is referred to as a Provider Configuration endpoint or
+    # an Authorization Server Metadata endpoint.
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: "http://127.0.0.1:9001"
+
     oauth2:
       resourceserver:
-        #jwt:
-         # issuer-uri: "http://127.0.0.1:9000"
         jwt:
-          jwk-set-uri: http://localhost:9000/oauth2/jwks
+          jwk-set-uri: http://localhost:9001/oauth2/jwks
+
       client:
         registration:
           oidc-client:
@@ -16,7 +38,8 @@ spring:
             client-id: oidc-client
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:8080/authorized"
+            redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/oidc-client"
+#            redirect-uri: "http://127.0.0.1:8080/authorized"
             scope:
               - oidc
               - profile
@@ -24,7 +47,7 @@ spring:
             client-name: oidc-client
         provider:
           spring:
-            #issuer-uri: "http://127.0.0.1:9000"
-            jwk-set-uri: http://127.0.0.1:9000/oauth2/jwks
-            authorization-uri: http://localhost:9000/oauth2/authorize
-            token-uri: http://localhost:9000/oauth2/token
+            issuer-uri: "http://127.0.0.1:9001"
+#            jwk-set-uri: http://127.0.0.1:9000/oauth2/jwks
+#            authorization-uri: http://localhost:9000/oauth2/authorize
+#            token-uri: http://localhost:9000/oauth2/token
