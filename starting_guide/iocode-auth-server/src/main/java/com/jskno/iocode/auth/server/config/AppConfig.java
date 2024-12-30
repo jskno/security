@@ -18,6 +18,7 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
@@ -83,7 +84,25 @@ public class AppConfig {
                         .build())
                 .build();
 
-        return new InMemoryRegisteredClientRepository(registeredClient, registeredClientPkce);
+        RegisteredClient registeredClientOpaqueToken = RegisteredClient
+            .withId(UUID.randomUUID().toString())
+            .clientId("client-optk")
+            .clientSecret("secret-optk")
+            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+            .redirectUri("http://localhost:8083")
+            .scope("openid")
+            .tokenSettings(TokenSettings.builder()
+                .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
+                .accessTokenTimeToLive(Duration.ofHours(6))
+                .build())
+            .clientSettings(ClientSettings.builder()
+                .requireProofKey(true)
+                .build())
+            .build();
+
+        return new InMemoryRegisteredClientRepository(registeredClient, registeredClientPkce, registeredClientOpaqueToken);
     }
 
     @Bean
