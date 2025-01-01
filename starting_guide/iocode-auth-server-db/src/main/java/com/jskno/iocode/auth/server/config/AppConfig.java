@@ -48,7 +48,7 @@ public class AppConfig {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    @Bean
+//    @Bean
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient
                 .withId(UUID.randomUUID().toString())

@@ -1,0 +1,7 @@
+version: '3'
+services:
+
+  bdgwy:
+    image: "artifactory.emobg.io/docker-sbx/emobg/db_hospedajes_notifications:1.4"
+    ports:
+      - 5432:5432

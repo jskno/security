@@ -1,0 +1,57 @@
+version: '3.2'
+services:
+
+  postgres:
+    build:
+      context: ..
+      dockerfile: ./ci/Dockerfile-db
+    restart: always
+    volumes:
+      - ./db:/tmp/db
+    ports:
+      - 5432:5432
+
+  wiremock:
+    image: wiremock/wiremock:2.32.0
+    working_dir: /home/wiremock
+    container_name: wiremock
+    volumes:
+      - ../src/test/resources/wiremock/mappings:/home/wiremock/mappings
+      - ../src/test/resources/wiremock/__files:/home/wiremock/__files
+    ports:
+      - "28601:28601"
+    command: --port 28601 --max-request-journal-entries 1000 --verbose
+
+  app:
+    image: artifactory.emobg.io/docker/emobg/infra/spring-boot-21:21.0.4_p7-r0
+    working_dir: /app
+    volumes:
+      - ..:/app
+    environment:
+      - ARTIFACTORY_REPO_USER=${ARTIFACTORY_REPO_USER}
+      - ARTIFACTORY_REPO_PWD=${ARTIFACTORY_REPO_PWD}
+      - APPHOST=app
+      - DBSERVER=postgres
+      - hospedajes_api_base_url=http://wiremock:28601
+    depends_on:
+      - postgres
+      - wiremock
+    ports:
+      - 8082:8082
+    command: >
+      sh -c "if [ ! -f "./build/temp/*.jar" ]; then sh ./gradlew clean -x test build; sh ./gradlew buildscript:package; fi;
+            cd /app/build/temp/ ; 
+            sh run.sh"
+
+  karate:
+    build:
+      context: ..
+      dockerfile: ./ci/Dockerfile-karate
+    environment:
+      - ARTIFACTORY_REPO_USER=${ARTIFACTORY_REPO_USER}
+      - ARTIFACTORY_REPO_PWD=${ARTIFACTORY_REPO_PWD}
+      - APPHOST=app
+    depends_on:
+      - postgres
+      - wiremock
+      - app

@@ -11,6 +11,14 @@ https://www.youtube.com/watch?v=1NBe49G220U
 Implementation of OAuth2 clients registration
 https://www.youtube.com/watch?v=iy3DGjxMYrQ
 
+Token Revocation In Spring OAuth2 Authorization Server
+https://www.youtube.com/watch?v=6SED8hVOK2g
+
+
+Complete Spring Security & JWT tutorial [2024]
+https://www.youtube.com/watch?v=mUq9MGe5vZA
+
+REPOSITORY:
 https://github.com/iocods/iocode-spring-oauth2
 
 
