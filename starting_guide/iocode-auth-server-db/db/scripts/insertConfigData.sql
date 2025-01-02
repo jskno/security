@@ -1,23 +1,10 @@
 SET search_path TO auth;
--- INSERT INTO events_origins ("name", email_sender, email_cc) VALUES
---     ('SIG', 'noreply@goldcar.com', 'jose.cano@europcar.com'),
---     ('GWY', 'noreply@europcar.com', 'jose.cano@europcar.com'),
---     ('PHX', 'noreply@europcar.com', 'jose.cano@europcar.com');
---
--- INSERT INTO events_statuses (code, description)
--- VALUES
---     ('IN_PROCESS', 'Initial state of a message that is received and stored'),
---     ('CHECK_PENDING', 'State of a message that has been sent and has a batch code stored'),
---     ('RESPONSE_OK', 'State of a message that has an OK in the batch response after checking the result'),
---     ('PROCESSED_OK', 'Final state of a message processed successfully, with cancellation of previous events done'),
---     ('RESPONSE_KO', 'State of a message that has an KO in the batch response after checking the result'),
---     ('PROCESSED_KO', 'Final state of a message processed with some error in the response, after sent email successfully'),
---     ('DISCARDED', 'State of a message with body already processed previously or with a retrievable error and a posterior message (same RentalAgreement) processed correctly'),
---     ('OBSOLETE', 'State of a message that is DISCARDED because a posterior event has entered in the system with same key (origin, bookingNumber and isRentalAgreement'),
---     ('CANCELLED', 'State of a message whose communication has been cancelled'),
---     ('KO', 'State of a message processed with some not retrievable error or that has reached the max number of retries'),
---     ('BATCH_KO', 'State of a message that has been sent and has a format error as response'),
---     ('IN_PROCESS_KO', 'Final state of a message that has a stored batch with format error with an email sent successfully'),
---     ('IN_PROCESS_EMAIL_SENT', 'State of a message that has a batch with format error as response and an email is successfully sent'),
---     ('PROCESSED_EMAIL_SENT', 'State of a message that has a communications with format as response and an email is successfully sent'),
---     ('CHECK_PENDING_IN_TOPIC', 'State of a message that has been sent and has a batch code and is in check-pending topic to process the batch result');
+
+insert into auth.clients (client_id, client_name, client_secret, grant_type, redirect_uri, require_proof_key, token_format, id)
+values ('client', 'myAuthCodeClient', 'secret', 'authorization_code', 'http://localhost:8081', false, 'self_contained', 'c20bfc7b-20e2-40cb-9b17-5e7c994d4288');
+
+insert into auth.clients (client_id, client_name, client_secret, grant_type, redirect_uri, require_proof_key, token_format, id)
+values ('client-pkce', 'myAuthCodeClientPKCE', 'secret-pkce', 'authorization_code', 'http://localhost:8082', true, 'self_contained', '017ba212-0512-4917-8b94-53ee16e27395');
+
+insert into auth.clients (client_id, client_name, client_secret, grant_type, redirect_uri, require_proof_key, token_format, id)
+values ('client-optk', 'myAuthCodeClientOPTK', 'secret-optk', 'authorization_code', 'http://localhost:8083', true, 'reference', 'fd17988a-df94-4d49-abf7-2011f31c6d45');
