@@ -1,0 +1,8 @@
+version: '3'
+services:
+
+  bdgwy:
+#    image: "artifactory.emobg.io/docker-sbx/emobg/security-app-db:1.0"
+    image: "security-app-db:1.0"
+    ports:
+      - 5432:5432

@@ -1,4 +1,6 @@
 
+*********************************************************
+
 Build a complete OAuth2 Authorization Server with Springboot:
 https://www.youtube.com/watch?v=LM_Bnhf26Ew
 
@@ -14,9 +16,18 @@ https://www.youtube.com/watch?v=iy3DGjxMYrQ
 Token Revocation In Spring OAuth2 Authorization Server
 https://www.youtube.com/watch?v=6SED8hVOK2g
 
+*********************************************************
 
 Complete Spring Security & JWT tutorial [2024]
 https://www.youtube.com/watch?v=mUq9MGe5vZA
+
+Spring security & Jwt tutorial update
+https://www.youtube.com/watch?v=KW5EwW1iPJE
+
+REPOSITORY:
+https://github.com/iocods/iocode-jwt-spring-security
+
+*********************************************************
 
 REPOSITORY:
 https://github.com/iocods/iocode-spring-oauth2

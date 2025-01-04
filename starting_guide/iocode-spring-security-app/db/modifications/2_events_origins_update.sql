@@ -1,0 +1,1 @@
+UPDATE hospedajes.events_origins SET "name"='PHX' WHERE "name" = 'UBQ';

@@ -1,0 +1,3 @@
+
+CREATE ROLE testuser LOGIN SUPERUSER PASSWORD 'test';
+CREATE DATABASE auth-server-db;
