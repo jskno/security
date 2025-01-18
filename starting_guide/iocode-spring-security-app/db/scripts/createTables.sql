@@ -1,17 +1,21 @@
-\connect auth-server-db
+\connect spring-sec-db
 
-CREATE SCHEMA IF NOT EXISTS auth;
-SET search_path TO auth;
-
-create table auth.clients (
-    require_proof_key boolean not null,
-    client_id varchar(255) unique,
-    client_name varchar(255) unique,
-    client_secret varchar(255),
-    grant_type varchar(255),
-    id varchar(255) not null,
-    redirect_uri varchar(255) not null,
-    token_format varchar(255),
+create table stdn.students (
+    age integer not null,
+    id bigint not null,
+    email varchar(255),
+    first_name varchar(255),
+    last_name varchar(255),
     primary key (id)
+)
+
+create table sec.users (
+    firstname varchar(255),
+    lastname varchar(255),
+    password varchar(255),
+    u_id varchar(255) not null,
+    username varchar(255),
+    roles varchar(255) array,
+    primary key (u_id)
 )
 

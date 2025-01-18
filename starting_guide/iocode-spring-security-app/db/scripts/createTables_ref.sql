@@ -1,4 +1,4 @@
-\connect auth-server-db
+\connect spring-sec-db
 
 CREATE SCHEMA IF NOT EXISTS hospedajes;
 SET search_path TO hospedajes;

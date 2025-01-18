@@ -2,11 +2,13 @@ FROM artifactory.emobg.io/docker/postgres:11
 
 ENV POSTGRES_USER testuser
 ENV POSTGRES_PASSWORD test
-ENV POSTGRES_DB security-app-db
+ENV POSTGRES_DB spring-sec-db
 
+COPY ./db/scripts/createSchemas.sql /docker-entrypoint-initdb.d
 COPY ./db/scripts/createTables.sql /docker-entrypoint-initdb.d
 COPY ./db/scripts/insertConfigData.sql /docker-entrypoint-initdb.d
 
+RUN chmod +x /docker-entrypoint-initdb.d/createSchemas.sql
 RUN chmod +x /docker-entrypoint-initdb.d/createTables.sql
 RUN chmod +x /docker-entrypoint-initdb.d/insertConfigData.sql
 

@@ -1,0 +1,11 @@
+services:
+
+  postgres:
+    build:
+      context: ..
+      dockerfile: ./ci/Dockerfile-db
+    restart: always
+    volumes:
+      - ./db:/tmp/db
+    ports:
+      - 5432:5432

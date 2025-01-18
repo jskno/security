@@ -14,4 +14,4 @@
 -- DROP TABLE hospedajes.events_statuses;
 -- DROP TABLE hospedajes.events_origins;
 
-DROP SCHEMA IF EXISTS auth CASCADE;
+DROP SCHEMA IF EXISTS stdn CASCADE;
