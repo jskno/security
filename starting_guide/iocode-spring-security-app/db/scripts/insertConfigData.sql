@@ -1,10 +1,10 @@
 SET search_path TO stdn;
 
-insert into stdn.clients (client_id, client_name, client_secret, grant_type, redirect_uri, require_proof_key, token_format, id)
-values ('client', 'myAuthCodeClient', 'secret', 'authorization_code', 'http://localhost:8081', false, 'self_contained', 'c20bfc7b-20e2-40cb-9b17-5e7c994d4288');
+insert into stdn.students (id, firstname, lastname, email, age)
+values (nextval('students_seq'),'Jose', 'Cano', 'jskno@gmail.com', 48);
 
-insert into stdn.clients (client_id, client_name, client_secret, grant_type, redirect_uri, require_proof_key, token_format, id)
-values ('client-pkce', 'myAuthCodeClientPKCE', 'secret-pkce', 'authorization_code', 'http://localhost:8082', true, 'self_contained', '017ba212-0512-4917-8b94-53ee16e27395');
+insert into stdn.students (id, firstname, lastname, email, age)
+values (nextval('students_seq'),'Alvaro', 'Cano', 'alvaro@gmail.com', 9);
 
-insert into stdn.clients (client_id, client_name, client_secret, grant_type, redirect_uri, require_proof_key, token_format, id)
-values ('client-optk', 'myAuthCodeClientOPTK', 'secret-optk', 'authorization_code', 'http://localhost:8083', true, 'reference', 'fd17988a-df94-4d49-abf7-2011f31c6d45');
+insert into stdn.students (id, firstname, lastname, email, age)
+values (nextval('students_seq'),'Eva', 'Cano', 'eve@gmail.com', 5);

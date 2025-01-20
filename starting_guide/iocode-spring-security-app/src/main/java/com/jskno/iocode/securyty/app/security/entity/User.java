@@ -1,10 +1,7 @@
 package com.jskno.iocode.securyty.app.security.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -30,16 +27,22 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String uId;
+
     private String username;
+
     private String password;
+
     private String firstname;
+
     private String lastname;
-    private List<String> roles;
+
+    @Enumerated(EnumType.STRING)
+    private List<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role)));
+        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.name())));
         return authorities;
     }
 

@@ -1,4 +1,4 @@
-FROM artifactory.emobg.io/docker/postgres:11
+FROM postgres:11
 
 ENV POSTGRES_USER testuser
 ENV POSTGRES_PASSWORD test
