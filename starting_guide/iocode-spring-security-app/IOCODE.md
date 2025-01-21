@@ -26,4 +26,4 @@ To generate the secret
 
     jwt.secret=462aad38b3dc34969d523ede02ade3e38d528d5877c9d899ceb87a66957ffcf3
 
-Min 45:57
+Min 1:32:00
