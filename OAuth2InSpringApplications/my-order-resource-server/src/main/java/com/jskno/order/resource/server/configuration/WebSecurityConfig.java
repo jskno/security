@@ -20,7 +20,7 @@ public class WebSecurityConfig  {
 
 		// Public API endpoint
 		http.authorizeHttpRequests(authorizeRequest ->
-			authorizeRequest.requestMatchers("/orders/status/check").permitAll();
+			authorizeRequest.requestMatchers("/orders/status/check").permitAll());
 
 		// Configure antMatchers if needed
 		http.authorizeHttpRequests(authorizeRequests ->
