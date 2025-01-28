@@ -22,6 +22,7 @@ public class OrderController {
     public String getOrders(Model model,
                     @RegisteredOAuth2AuthorizedClient("users-client-oidc") OAuth2AuthorizedClient authorizedClient) {
 
+
         String accessToken = authorizedClient.getAccessToken().getTokenValue();
         System.out.println(accessToken);
 
