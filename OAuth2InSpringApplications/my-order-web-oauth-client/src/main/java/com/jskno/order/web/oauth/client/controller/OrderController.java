@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2Aut
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,8 @@ public class OrderController {
         System.out.println(accessToken);
 
 
-         List<Order> orders = orderResourceService.getRestTemplateOrders(accessToken);
-         model.addAttribute("orders", orders);
+         Mono<List<Order>> orders = orderResourceService.getAllOrders(accessToken);
+         model.addAttribute("orders", orders.block());
 
          return "orders-page";
 
