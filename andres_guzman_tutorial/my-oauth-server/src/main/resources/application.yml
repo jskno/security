@@ -34,4 +34,6 @@ spring:
               scopes:
                 - "openid"
                 - "profile"
+                - "read"
+                - "write"
             require-authorization-consent: false
