@@ -1,7 +1,6 @@
 package com.jskno.springr.esource.server1.controller;
 
 import com.jskno.springr.esource.server1.Task;
-import org.springframework.scheduling.TaskScheduler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

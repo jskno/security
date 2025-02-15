@@ -30,6 +30,6 @@ public class SecurityConfig {
         http.addFilterAfter(new TenantFilter(), AnonymousAuthenticationFilter.class);
         http.addFilterAfter(new TenantFilterOnce(), AnonymousAuthenticationFilter.class);
 
-        return (SecurityFilterChain)http.build();
+        return http.build();
     }
 }
