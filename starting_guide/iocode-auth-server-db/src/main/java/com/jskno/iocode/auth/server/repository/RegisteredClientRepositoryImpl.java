@@ -1,7 +1,6 @@
 package com.jskno.iocode.auth.server.repository;
 
 import com.jskno.iocode.auth.server.entity.CustomRegisteredClient;
-import com.jskno.iocode.auth.server.entity.CustomRegisteredClientRepository;
 import java.time.Duration;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
